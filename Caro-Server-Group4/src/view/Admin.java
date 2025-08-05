@@ -377,7 +377,24 @@ public class Admin extends javax.swing.JFrame implements Runnable {
         }
     }//GEN-LAST:event_warnButtonActionPerformed
 
-   
+    private void sendMessage() {
+        String message = noticeTextField.getText();
+        if (message.isEmpty()) return;
+        String temp = messageView.getText();
+        temp += "Thông báo từ máy chủ : " + message + "\n";
+        messageView.setText(temp);
+        messageView.setCaretPosition(messageView.getDocument().getLength());
+        Server.serverThreadBus.boardCast(-1, "chat-server,Thông báo từ máy chủ : " + message);
+        noticeTextField.setText("");
+    }
+
+    public void addMessage(String message) {
+        String tmp = messageView.getText();
+        tmp = tmp + message + "\n";
+        messageView.setText(tmp);
+        messageView.setCaretPosition(threadRoomListView.getDocument().getLength());
+    }
+
     private boolean isInvalidForm() {
         if (userIdTextField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập ID của User");
