@@ -110,7 +110,11 @@ public class CreateRoomPasswordFrm extends javax.swing.JFrame {
             }
         });
 
-     
+        loadingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadingButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
