@@ -119,6 +119,22 @@ public void startFind() {
 }
 
 
+public void sendFindRequest() {
+    try {
+        Client.socketHandle.write("quick-room,");
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+    }
+}
+
+public void showFoundRoom() {
+    found = true;
+    if (timer != null) timer.stop();
+    foundLabel.setVisible(true);
+    jLabel5.setVisible(true);
+    findingLabel.setVisible(false);
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
